@@ -51,7 +51,7 @@ class CoreDataManager: NSObject {
         let fetchRequest: NSFetchRequest = Person.fetchRequest()
         do {
             let result: [Person] = try context.fetch(fetchRequest)
-            if let _ = result.first {
+            if !result.isEmpty {
                 for person in result {
                     print("姓名：\(person.name ?? "") 年龄：\(person.age)")
                 }
@@ -72,7 +72,7 @@ class CoreDataManager: NSObject {
         fetchRequest.predicate = NSPredicate(format: "name == %@", name)
         do {
             let result: [Person] = try context.fetch(fetchRequest)
-            if let _ = result.first {
+            if !result.isEmpty {
                 for person in result {
                     print("姓名：\(person.name ?? "") 年龄：\(person.age)")
                 }
@@ -92,7 +92,7 @@ class CoreDataManager: NSObject {
         fetchRequest.predicate = NSPredicate(format: "name == %@", name)
         do {
             let result: [Person] = try context.fetch(fetchRequest)
-            if let _ = result.first {
+            if !result.isEmpty {
                 for person in result {
                     person.name = newName
                     person.age = newAge
@@ -116,7 +116,7 @@ class CoreDataManager: NSObject {
         fetchRequest.predicate = NSPredicate(format: "name = %@", name)
         do {
             let result: [Person] = try context.fetch(fetchRequest)
-            if let _ = result.first {
+            if !result.isEmpty {
                 for person in result {
                     context.delete(person)
                 }
@@ -138,7 +138,7 @@ class CoreDataManager: NSObject {
         let fetchRequest: NSFetchRequest = Person.fetchRequest()
         do {
             let result: [Person] = try context.fetch(fetchRequest)
-            if let _ = result.first {
+            if !result.isEmpty {
                 for person in result {
                     context.delete(person)
                 }
